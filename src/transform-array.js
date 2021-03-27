@@ -1,5 +1,3 @@
-const CustomError = require("../extensions/custom-error");
-
 module.exports = function transform(arr) {
   if (!Array.isArray(arr)) throw new Error();
   if(arr.length === 0 ) return [];
@@ -30,34 +28,3 @@ module.exports = function transform(arr) {
     return acc;
   }, []);
 };
-
-// !!!
-
-// const CustomError = require("../extensions/custom-error");
-
-// module.exports = function transform(arr) {
-//   if (!Array.isArray(arr)) throw new Error();
-//   if (arr.length === 0) return [];
-
-//   const arrCopy = arr.map((item) => item);
-
-//   const arrRebuilder = (index, type) => {
-//     if (type === "--double-next") arrCopy.splice(index, 1, arrCopy[index + 1]);
-//     if (type === "--discard-prev") arrCopy.splice(index - 1, 1);
-//     if (type === "--discard-next") arrCopy.splice(index, 1);
-//     if (type === "--double-prev") arrCopy.splice(index, 1, arrCopy[index - 1]);
-//   };
-
-//   for (let i = 0; i < arr.length; i++) {
-//     arrRebuilder(i, arr[i]);
-//   }
-
-//   return arrCopy.filter(
-//     (item) =>
-//       item !== "--double-next" &&
-//       item !== "--discard-prev" &&
-//       item !== "--discard-next" &&
-//       item !== "--double-prev" &&
-//       item !== undefined
-//   );
-// };
